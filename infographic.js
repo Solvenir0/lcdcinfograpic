@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI();
         const loadedCount = drafts.qualifiers.length + drafts.groups.length + drafts.playoffs.length;
         if (loadedCount > 0) {
-            try { analyzeAllDrafts(); } catch (e) { console.warn('Auto analysis failed:', e); }
+            try { analyzeAllDrafts(true); } catch (e) { console.warn('Auto analysis failed:', e); }
             // Hide data panel UI for shared (read-only) view
             const dataPanel = document.querySelector('.data-panel');
             const mainLayout = document.querySelector('.main-layout');
@@ -354,13 +354,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return dropdown.getAttribute('data-value') || '';
     }
 
-    function analyzeAllDrafts() {
+    function analyzeAllDrafts(silent = false) {
         const allDrafts = getFilteredDrafts();
         console.log('Analyzing drafts:', allDrafts.length);
-        
         if (allDrafts.length === 0) {
-            alert("No drafts to analyze. Please add some draft codes or enable stage filters.");
-            return;
+            if (!silent) alert("No drafts to analyze. Please add some draft codes or enable stage filters.");
+            return false;
         }
 
         elements.statsPlaceholder.classList.add('hidden');
@@ -493,7 +492,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 5. Populate pairing dropdown and analyze timing
         populatePairingDropdown();
         populateCounterDropdown();
-        analyzeTimingStats();
+    analyzeTimingStats();
+    return true;
     }
     
     function calculateStat(item, key, totalDrafts) {

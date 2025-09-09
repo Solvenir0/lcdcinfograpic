@@ -95,6 +95,14 @@ h4 {
     align-items: start;
 }
 
+.main-layout.hide-data-panel {
+    grid-template-columns: 1fr; /* Only stats panel spans full width */
+}
+
+.data-panel.hidden-data-panel {
+    display: none !important;
+}
+
 .card {
     background: rgba(20, 20, 22, 0.8);
     border-radius: 16px;

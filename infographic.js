@@ -71,9 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return; // Halt execution
         }
-    // Attempt automatic repository draft loading (GitHub Pages)
-    await autoLoadRepoDraftsIfAvailable();
+        // Attempt automatic repository draft loading (GitHub Pages)
+        await autoLoadRepoDraftsIfAvailable();
         updateUI();
+        const loadedCount = drafts.qualifiers.length + drafts.groups.length + drafts.playoffs.length;
+        if (loadedCount > 0) {
+            try { analyzeAllDrafts(); } catch (e) { console.warn('Auto analysis failed:', e); }
+            // Hide data panel UI for shared (read-only) view
+            const dataPanel = document.querySelector('.data-panel');
+            const mainLayout = document.querySelector('.main-layout');
+            if (dataPanel && mainLayout) {
+                dataPanel.classList.add('hidden-data-panel');
+                mainLayout.classList.add('hide-data-panel');
+            }
+        }
     }
 
     function processRawData() {

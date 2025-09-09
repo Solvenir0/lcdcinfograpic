@@ -71,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return; // Halt execution
         }
+    // Attempt automatic repository draft loading (GitHub Pages)
+    await autoLoadRepoDraftsIfAvailable();
         updateUI();
     }
 
@@ -1633,6 +1635,51 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeConfirmModal() {
         elements.confirmModal.classList.add('hidden');
         confirmCallback = null;
+    }
+
+    // --- AUTO LOAD FROM REPO (STATIC HOST) ---
+    async function autoLoadRepoDraftsIfAvailable() {
+        // Don't override if user already loaded/added drafts in this session
+        if (drafts.qualifiers.length + drafts.groups.length + drafts.playoffs.length > 0) return;
+        try {
+            const manifestResp = await fetch('draft_manifest.json', { cache: 'no-cache' });
+            if (!manifestResp.ok) return; // Manifest absent -> skip silently
+            const manifest = await manifestResp.json();
+            const stageKeys = ['qualifiers', 'groups', 'playoffs'];
+            for (const stage of stageKeys) {
+                const files = manifest[stage] || [];
+                for (const filePath of files) {
+                    try {
+                        const resp = await fetch(filePath, { cache: 'no-cache' });
+                        if (!resp.ok) continue;
+                        const fileData = await resp.json();
+                        // Normalization similar to loadDraftsFromExistingFolder
+                        let draftData = fileData.draftCode ? JSON.parse(atob(fileData.draftCode)) : fileData;
+                        if (!draftData.participants || !draftData.draft) continue; // Skip invalid
+                        // Winner from filename pattern
+                        const filename = filePath.split('/').pop();
+                        const winnerFromFilename = parseWinnerFromFilename(filename);
+                        if (winnerFromFilename) {
+                            draftData.winner = winnerFromFilename;
+                            draftData.winnerName = winnerFromFilename === 'p1' ? 'Left Side' : 'Right Side';
+                        } else if (!draftData.winner && fileData.winner) {
+                            draftData.winner = fileData.winner;
+                            draftData.winnerName = fileData.winnerName || (fileData.winner === 'p1' ? 'Left Side' : 'Right Side');
+                        }
+                        drafts[stage].push(draftData);
+                    } catch (innerErr) {
+                        console.warn('Failed loading draft file', filePath, innerErr);
+                    }
+                }
+            }
+            console.log('Auto-loaded drafts from manifest:', {
+                qualifiers: drafts.qualifiers.length,
+                groups: drafts.groups.length,
+                playoffs: drafts.playoffs.length
+            });
+        } catch (err) {
+            console.log('No draft manifest or failed auto-load:', err.message);
+        }
     }
 
     // --- START THE APP ---

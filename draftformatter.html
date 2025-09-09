@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbus Draft File Formatter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Base & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #B31B1B;
+            --primary-dark: #800000;
+            --secondary: #2a2a2e;
+            --accent: #FFD700;
+            --text: #F0F0F0;
+            --bg: #121212;
+            --panel: #1E1E1E;
+            --border: #444;
+            --success: #4caf50;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 20px 20px;
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- Typography & Headers --- */
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: auto;
+        }
+
+        p {
+            color: #aaa;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(20, 20, 22, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .form-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Form Elements & Buttons --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-height {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        textarea.full-height {
+            flex-grow: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            background: #111;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+            font-family: monospace;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px 30px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background-image: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(45deg, #FFC107, var(--accent));
+            color: #000;
+        }
+        
+        .btn-secondary {
+            background-image: linear-gradient(45deg, #333, #555);
+        }
+        .btn-secondary:hover:not(:disabled) {
+            background-image: linear-gradient(45deg, #444, #666);
+        }
+
+        .btn-large {
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            margin-top: 30px;
+        }
+
+        .winner-select {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-radio {
+            flex: 1;
+            padding: 10px;
+            font-size: 1rem;
+            background-image: linear-gradient(45deg, #333, #555);
+            border: 2px solid var(--border);
+        }
+        .btn-radio.active {
+            background-image: linear-gradient(45deg, var(--success), #5cb85c);
+            border-color: #fff;
+            color: #fff;
+        }
+
+
+        /* --- Output Section --- */
+        .output-section {
+            margin-top: 30px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .filename-preview {
+            background: #111;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-align: center;
+            word-break: break-all;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 20px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="uploads/cropped-limbus_logo_feather.webp" alt="Limbus Logo" class="header-logo"> Draft File Formatter</h1>
+            <p>A utility to process and name tournament draft files</p>
+        </header>
+
+        <div class="card main-content">
+            <h3><i class="fas fa-file-export"></i> Create Named Draft File</h3>
+            
+            <div class="form-grid">
+                <!-- Column 1: Match Details -->
+                <div class="form-column">
+                    <h4><i class="fas fa-info-circle"></i> Match Details</h4>
+                    <div class="form-group">
+                        <label for="stage-select">Tournament Stage</label>
+                        <select id="stage-select">
+                            <option value="Q">Qualifiers</option>
+                            <option value="G">Groups</option>
+                            <option value="P">Playoffs</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="game-number">Game Number</label>
+                        <input type="number" id="game-number" value="1" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="player1-name">Player 1 Name</label>
+                        <input type="text" id="player1-name" placeholder="e.g., Alice">
+                    </div>
+                    <div class="form-group">
+                        <label for="player2-name">Player 2 Name</label>
+                        <input type="text" id="player2-name" placeholder="e.g., Bob">
+                    </div>
+                    <div class="form-group">
+                        <label>Winner</label>
+                        <div class="winner-select" id="winner-select">
+                            <button class="btn-radio" data-winner="p1">Player 1</button>
+                            <button class="btn-radio" data-winner="p2">Player 2</button>
+                            <button class="btn-radio active" data-winner="none">None</button>
+                        </div>
+                    </div>
+                     <button class="btn btn-secondary" id="reset-btn" style="margin-top: auto;"><i class="fas fa-undo"></i> Quick Reset</button>
+                </div>
+
+                <!-- Column 2: Draft Code -->
+                <div class="form-column">
+                    <h4><i class="fas fa-paste"></i> Raw Draft Code</h4>
+                    <div class="form-group full-height">
+                        <label for="draft-code">Paste single draft export code here</label>
+                        <textarea id="draft-code" class="full-height" placeholder="Paste the long export code from the draft app..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <h4><i class="fas fa-file-signature"></i> Generated Filename Preview</h4>
+                <div id="filename-preview" class="filename-preview">
+                    Fill out the fields to see a preview...
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-large" id="generate-btn"><i class="fas fa-download"></i> Generate & Download File</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM ELEMENT CACHE ---
+            const elements = {
+                stageSelect: document.getElementById('stage-select'),
+                gameNumber: document.getElementById('game-number'),
+                player1Name: document.getElementById('player1-name'),
+                player2Name: document.getElementById('player2-name'),
+                winnerSelect: document.getElementById('winner-select'),
+                draftCode: document.getElementById('draft-code'),
+                filenamePreview: document.getElementById('filename-preview'),
+                generateBtn: document.getElementById('generate-btn'),
+                resetBtn: document.getElementById('reset-btn'),
+            };
+
+            // --- INITIALIZATION ---
+            function initialize() {
+                setupEventListeners();
+                updatePreview();
+            }
+
+            function setupEventListeners() {
+                // Update preview on any input change
+                Object.values(elements).forEach(element => {
+                    if (element.tagName === 'INPUT' || element.tagName === 'SELECT' || element.tagName === 'TEXTAREA') {
+                        element.addEventListener('input', updatePreview);
+                    }
+                });
+
+                // Handle winner button clicks
+                elements.winnerSelect.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('btn-radio')) {
+                        elements.winnerSelect.querySelectorAll('.btn-radio').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                        updatePreview();
+                    }
+                });
+
+                // Handle file generation and reset
+                elements.generateBtn.addEventListener('click', generateAndDownloadFile);
+                elements.resetBtn.addEventListener('click', resetForm);
+            }
+
+            // --- CORE LOGIC ---
+            function resetForm() {
+                elements.player1Name.value = '';
+                elements.player2Name.value = '';
+                elements.draftCode.value = '';
+
+                // Reset winner selection to "None"
+                elements.winnerSelect.querySelectorAll('.btn-radio').forEach(btn => btn.classList.remove('active'));
+                elements.winnerSelect.querySelector('[data-winner="none"]').classList.add('active');
+
+                // Update the filename preview
+                updatePreview();
+            }
+
+            function generateFilename() {
+                const stage = elements.stageSelect.value;
+                const gameNum = String(elements.gameNumber.value).padStart(3, '0');
+                const p1 = sanitizeFilename(elements.player1Name.value) || 'Player1';
+                const p2 = sanitizeFilename(elements.player2Name.value) || 'Player2';
+                
+                const winnerBtn = elements.winnerSelect.querySelector('.btn-radio.active');
+                const winnerType = winnerBtn ? winnerBtn.dataset.winner : 'none';
+
+                let winnerPart = '';
+                if (winnerType === 'p1') {
+                    winnerPart = `_W-${p1}`;
+                } else if (winnerType === 'p2') {
+                    winnerPart = `_W-${p2}`;
+                }
+
+                return `${stage}${gameNum}_${p1}-vs-${p2}${winnerPart}.json`;
+            }
+
+            function updatePreview() {
+                elements.filenamePreview.textContent = generateFilename();
+            }
+            
+            function sanitizeFilename(name) {
+                // Replaces spaces and special characters with a hyphen
+                if (!name) return '';
+                return name.trim().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+            }
+
+            function generateAndDownloadFile() {
+                const code = elements.draftCode.value.trim();
+                if (!code) {
+                    alert("Please paste a draft export code.");
+                    return;
+                }
+
+                let draftData;
+                try {
+                    const jsonString = atob(code);
+                    draftData = JSON.parse(jsonString);
+
+                    // Basic validation
+                    if (!draftData.participants || !draftData.draft) {
+                        throw new Error("Invalid draft data structure.");
+                    }
+                } catch (error) {
+                    console.error("Error parsing draft code:", error);
+                    alert("Invalid or corrupted draft code. Could not generate file.");
+                    return;
+                }
+
+                // Add the user-inputted metadata to the JSON object
+                draftData.matchMetadata = {
+                    stage: elements.stageSelect.options[elements.stageSelect.selectedIndex].text,
+                    gameNumber: elements.gameNumber.value,
+                    player1: elements.player1Name.value,
+                    player2: elements.player2Name.value,
+                    winner: (elements.winnerSelect.querySelector('.btn-radio.active').dataset.winner === 'p1') ? elements.player1Name.value : (elements.winnerSelect.querySelector('.btn-radio.active').dataset.winner === 'p2') ? elements.player2Name.value : 'None'
+                };
+
+                const filename = generateFilename();
+                const prettyJson = JSON.stringify(draftData, null, 2); // Pretty print the JSON
+                const blob = new Blob([prettyJson], { type: 'application/json' });
+                
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = filename;
+                
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
+
+            // --- START THE APP ---
+            initialize();
+        });
+    </script>
+</body>
+</html>
+

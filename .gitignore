@@ -1,0 +1,20 @@
+# OS / Editor
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# Node tooling (if later added)
+node_modules/
+dist/
+coverage/
+*.map
+
+# Build artifacts
+*.min.js
+*.min.css
+
+# Local storage export backups
+*_index.json

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbus Company - Tournament Infographic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="uploads/cropped-limbus_logo_feather.webp" alt="Limbus Logo" class="header-logo"> Tournament Infographics</h1>
+            <p>Analyze draft data from your tournaments</p>
+        </header>
+
+        <div class="main-layout">
+            <!-- Left Panel: Data Input and Management -->
+            <div class="card data-panel">
+                <h3><i class="fas fa-database"></i> Draft Data Management</h3>
+                
+                <div class="form-group">
+                    <label for="draft-stage-select">Select Tournament Stage</label>
+                    <select id="draft-stage-select">
+                        <option value="qualifiers">Qualifiers</option>
+                        <option value="groups">Groups</option>
+                        <option value="playoffs">Playoffs</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="draft-import-code">Paste Draft Export Code</label>
+                    <textarea id="draft-import-code" placeholder="Paste a draft export code here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="draft-winner-select">Which Side Won?</label>
+                    <select id="draft-winner-select">
+                        <option value="">Select Winner...</option>
+                        <option value="p1">Left Side</option>
+                        <option value="p2">Right Side</option>
+                    </select>
+                </div>
+
+                <div id="storage-status" class="storage-status">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+
+                <button class="btn" id="add-draft-btn"><i class="fas fa-plus-circle"></i> Add Draft to Stage</button>
+
+                <div class="draft-list-container">
+                    <h4>Current Drafts</h4>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-stage="qualifiers">Qualifiers (<span id="qualifiers-count">0</span>)</button>
+                        <button class="tab-btn" data-stage="groups">Groups (<span id="groups-count">0</span>)</button>
+                        <button class="tab-btn" data-stage="playoffs">Playoffs (<span id="playoffs-count">0</span>)</button>
+                    </div>
+                    <div id="draft-list" class="draft-list">
+                        <p class="empty-list">No drafts added for this stage yet.</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+                     <button class="btn btn-primary" id="analyze-all-btn"><i class="fas fa-cogs"></i> Generate Full Report</button>
+                     <button class="btn btn-secondary" id="load-file-btn"><i class="fas fa-folder-open"></i> Load from DraftCodes Folder</button>
+                     <button class="btn btn-secondary" id="download-data-btn"><i class="fas fa-download"></i> Download Data</button>
+                     <button class="btn" id="clear-all-btn"><i class="fas fa-trash"></i> Clear All Data</button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Statistics Display -->
+            <div class="card stats-panel">
+                <div class="stats-filter-section">
+                    <h4><i class="fas fa-filter"></i> Include in Analysis</h4>
+                    <div class="stage-filter-checkboxes">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="filter-qualifiers" checked>
+                            <span class="checkmark"></span>
+                            Qualifiers
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="filter-groups" checked>
+                            <span class="checkmark"></span>
+                            Groups
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="filter-playoffs" checked>
+                            <span class="checkmark"></span>
+                            Playoffs/Finals
+                        </label>
+                    </div>
+                    <button class="btn btn-small" id="update-analysis-btn"><i class="fas fa-sync-alt"></i> Update Analysis</button>
+                </div>
+                
+                <div id="stats-placeholder">
+                    <h3><i class="fas fa-chart-bar"></i> Statistics Report</h3>
+                    <p>Add draft codes and click "Generate Full Report" to see detailed infographics.</p>
+                    <div class="placeholder-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                </div>
+                <div id="stats-display" class="hidden">
+                    <div class="stats-header">
+                        <h3><i class="fas fa-chart-bar"></i> Tournament Analysis Report</h3>
+                        <p>Based on <strong id="total-drafts-analyzed">0</strong> drafts</p>
+                    </div>
+
+                    <!-- Overall Stats -->
+                    <div class="stat-category">
+                        <h4><i class="fas fa-globe-americas"></i> Overall Statistics</h4>
+                        <div class="stat-grid" id="overall-stats-grid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- ID Statistics -->
+                    <div class="stat-category">
+                        <h4><i class="fas fa-users"></i> Identity (ID) Statistics</h4>
+                        <div class="stat-controls">
+                             <input type="text" id="id-search-input" placeholder="Search IDs...">
+                        </div>
+                        <div class="stat-table-container">
+                            <table id="id-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="name">Identity <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="picks">Picks <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="bans">Bans <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="pickRate">Pick Rate <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="banRate">Ban Rate <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="presence">Presence <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="winRate">Win Rate <span class="sort-arrow"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ID Pairing Analysis -->
+                    <div class="stat-category">
+                        <h4><i class="fas fa-link"></i> ID Pairing Analysis</h4>
+                        <div class="stat-controls">
+                            <label for="pairing-id-select">Select Identity:</label>
+                            <div class="custom-dropdown" id="pairing-id-select">
+                                <div class="dropdown-selected">Choose an ID to see pairings...</div>
+                                <div class="dropdown-options" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div id="pairing-results" class="pairing-results hidden">
+                            <h5>Most Common Teammates</h5>
+                            <div class="stat-table-container">
+                                <table id="pairing-stats-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="sortable" data-sort="name">Teammate <span class="sort-arrow"></span></th>
+                                            <th class="sortable" data-sort="count">Times Picked Together <span class="sort-arrow"></span></th>
+                                            <th class="sortable" data-sort="pairingRate">Pairing Rate <span class="sort-arrow"></span></th>
+                                            <th class="sortable" data-sort="winRate">Win Rate Together <span class="sort-arrow"></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Populated by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Counter-Pick Analysis -->
+                    <div class="stat-category">
+                        <h4><i class="fas fa-chess"></i> Counter-Pick Analysis</h4>
+                        <div class="stat-controls">
+                            <label for="counter-id-select">Select Identity:</label>
+                            <div class="custom-dropdown" id="counter-id-select">
+                                <div class="dropdown-selected">Choose an ID to see counter relationships...</div>
+                                <div class="dropdown-options" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div id="counter-results" class="counter-results hidden">
+                            <div class="counter-section">
+                                <h5>Response Picks</h5>
+                                <p class="counter-description">IDs commonly picked by opponents after this ID is selected</p>
+                                <div class="stat-table-container">
+                                    <table id="response-picks-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Response Pick</th>
+                                                <th>Times Picked After</th>
+                                                <th>Response Rate</th>
+                                                <th>Success Rate vs Original</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Populated by JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="counter-section">
+                                <h5>Strong Against</h5>
+                                <p class="counter-description">IDs that this ID performs well against when on opposing teams</p>
+                                <div class="stat-table-container">
+                                    <table id="strong-against-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Opponent ID</th>
+                                                <th>Games Faced</th>
+                                                <th>Win Rate vs Opponent</th>
+                                                <th>Advantage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Populated by JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="counter-section">
+                                <h5>Weak Against</h5>
+                                <p class="counter-description">IDs that perform well against this ID when on opposing teams</p>
+                                <div class="stat-table-container">
+                                    <table id="weak-against-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Counter ID</th>
+                                                <th>Games Faced</th>
+                                                <th>Win Rate vs Counter</th>
+                                                <th>Disadvantage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Populated by JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pick Timing Analysis -->
+                    <div class="stat-category">
+                        <h4><i class="fas fa-clock"></i> Pick & Ban Timing Analysis</h4>
+                        <div class="stat-table-container">
+                            <table id="timing-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="name">Identity <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="avgPickPos">Avg Pick Position <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="pickTendency">Pick Tendency <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="avgBanPos">Avg Ban Position <span class="sort-arrow"></span></th>
+                                        <th class="sortable" data-sort="banTendency">Ban Tendency <span class="sort-arrow"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- EGO Statistics -->
+                    <div class="stat-category">
+                        <h4><i class="fas fa-shield-alt"></i> E.G.O. Statistics</h4>
+                         <div class="stat-controls">
+                             <label for="ego-sort-select">Sort by:</label>
+                             <select id="ego-sort-select">
+                                 <option value="banRate">Ban Rate</option>
+                                 <option value="name">Name</option>
+                             </select>
+                             <input type="text" id="ego-search-input" placeholder="Search EGOs...">
+                        </div>
+                        <div class="stat-table-container">
+                             <table id="ego-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>E.G.O</th>
+                                        <th>Bans</th>
+                                        <th>Ban Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="confirm-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 id="modal-title">Confirm Action</h3>
+            <p id="modal-text">Are you sure you want to proceed?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="modal-confirm-btn">Confirm</button>
+                <button class="btn btn-secondary" id="modal-cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="data.js"></script> <!-- Assumes user provides this -->
+    <script src="infographic.js"></script>
+</body>
+</html>

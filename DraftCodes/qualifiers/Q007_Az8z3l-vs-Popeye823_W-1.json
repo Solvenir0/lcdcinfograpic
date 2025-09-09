@@ -1,0 +1,512 @@
+{
+  "participants": {
+    "p1": {
+      "name": "Az8z3l"
+    },
+    "p2": {
+      "name": "Popeye823"
+    }
+  },
+  "roster": {
+    "p1": [
+      "the-pequod-first-mate-yi-sang",
+      "w-corp-l3-cleanup-agent-yi-sang",
+      "the-ring-pointillist-student-yi-sang",
+      "lobotomy-ego-solemn-lament-yi-sang",
+      "liu-association-south-section-3-yi-sang",
+      "seven-association-south-section-4-faust",
+      "multicrack-office-rep-faust",
+      "lce-ego-ardor-blossom-star-faust",
+      "lobotomy-ego-lantern-don-quixote",
+      "cinq-association-east-section-3-don-quixote",
+      "lobotomy-ego-in-the-name-of-love-and-hate-don-quixote",
+      "the-manager-of-la-manchaland-don-quixote",
+      "w-corp-l3-cleanup-agent-ryshu",
+      "lobotomy-ego-red-eyes-penitence-ryshu",
+      "heishou-pack-mao-branch-ryshu",
+      "the-middle-little-brother-meursault",
+      "blade-lineage-mentor-meursault",
+      "the-thumb-east-capo-iiii-meursault",
+      "full-stop-office-rep-hong-lu",
+      "r-corp-4th-pack-reindeer-hong-lu",
+      "the-lord-of-hongyuan-hong-lu",
+      "wild-hunt-heathcliff",
+      "full-stop-office-fixer-heathcliff",
+      "kurokumo-clan-wakashu-heathcliff",
+      "seven-association-south-section-4-heathcliff",
+      "liu-association-south-section-4-ishmael",
+      "molar-boatworks-fixer-ishmael",
+      "kurokumo-clan-captain-ishmael",
+      "family-hierarch-candidate-ishmael",
+      "liu-association-south-section-4-director-rodion",
+      "the-princess-of-la-manchaland-rodion",
+      "heishou-pack-si-branch-rodion",
+      "lobotomy-ego-the-sword-sharpened-with-tears-rodion",
+      "the-middle-little-brother-sinclair",
+      "dawn-office-fixer-sinclair",
+      "devyat-association-north-section-3-sinclair",
+      "lobotomy-ego-magic-bullet-outis",
+      "wuthering-heights-chief-butler-outis",
+      "heishou-pack-mao-branch-outis",
+      "edgar-family-heir-gregor",
+      "heishou-pack-si-branch-gregor",
+      "firefist-office-survivor-gregor"
+    ],
+    "p2": [
+      "the-ring-pointillist-student-yi-sang",
+      "lobotomy-ego-solemn-lament-yi-sang",
+      "liu-association-south-section-3-yi-sang",
+      "lobotomy-corp-remnant-faust",
+      "w-corp-l2-cleanup-agent-faust",
+      "the-one-who-grips-faust",
+      "lce-ego-ardor-blossom-star-faust",
+      "t-corp-class-3-collection-staff-don-quixote",
+      "the-manager-of-la-manchaland-don-quixote",
+      "lobotomy-ego-in-the-name-of-love-and-hate-don-quixote",
+      "heishou-pack-mao-branch-ryshu",
+      "lobotomy-ego-red-eyes-penitence-ryshu",
+      "the-thumb-east-capo-iiii-meursault",
+      "tingtang-gang-gangleader-hong-lu",
+      "the-lord-of-hongyuan-hong-lu",
+      "full-stop-office-rep-hong-lu",
+      "kurokumo-clan-wakashu-heathcliff",
+      "wild-hunt-heathcliff",
+      "kurokumo-clan-captain-ishmael",
+      "liu-association-south-section-4-ishmael",
+      "lobotomy-ego-the-sword-sharpened-with-tears-rodion",
+      "the-princess-of-la-manchaland-rodion",
+      "heishou-pack-si-branch-rodion",
+      "heishou-pack-you-branch-sinclair",
+      "dawn-office-fixer-sinclair",
+      "the-one-who-shall-grip-sinclair",
+      "lobotomy-ego-magic-bullet-outis",
+      "the-barber-of-la-manchaland-outis",
+      "heishou-pack-mao-branch-outis",
+      "the-priest-of-la-manchaland-gregor",
+      "firefist-office-survivor-gregor",
+      "heishou-pack-si-branch-gregor",
+      "g-corp-manager-corporal-gregor",
+      "lobotomy-ego-red-sheet-sinclair",
+      "n-corp-kleinhammer-heathcliff",
+      "seven-association-south-section-4-heathcliff",
+      "seven-association-south-section-6-ryshu",
+      "lccb-assistant-manager-ryshu",
+      "cinq-association-west-section-3-meursault",
+      "dead-rabbits-boss-meursault",
+      "lccb-assistant-manager-ishmael",
+      "liu-association-south-section-4-ryshu"
+    ]
+  },
+  "draft": {
+    "phase": "complete",
+    "step": 4,
+    "currentPlayer": "",
+    "action": "complete",
+    "actionCount": 0,
+    "available": {
+      "p1": [
+        "the-pequod-first-mate-yi-sang",
+        "lobotomy-ego-red-eyes-penitence-ryshu",
+        "full-stop-office-rep-hong-lu",
+        "r-corp-4th-pack-reindeer-hong-lu",
+        "kurokumo-clan-wakashu-heathcliff",
+        "kurokumo-clan-captain-ishmael",
+        "the-princess-of-la-manchaland-rodion",
+        "edgar-family-heir-gregor"
+      ],
+      "p2": [
+        "lobotomy-corp-remnant-faust",
+        "w-corp-l2-cleanup-agent-faust",
+        "the-one-who-grips-faust",
+        "t-corp-class-3-collection-staff-don-quixote",
+        "lobotomy-ego-red-eyes-penitence-ryshu",
+        "tingtang-gang-gangleader-hong-lu",
+        "full-stop-office-rep-hong-lu",
+        "kurokumo-clan-wakashu-heathcliff",
+        "kurokumo-clan-captain-ishmael",
+        "the-princess-of-la-manchaland-rodion",
+        "the-one-who-shall-grip-sinclair",
+        "the-barber-of-la-manchaland-outis",
+        "the-priest-of-la-manchaland-gregor",
+        "lobotomy-ego-red-sheet-sinclair",
+        "n-corp-kleinhammer-heathcliff",
+        "seven-association-south-section-6-ryshu",
+        "lccb-assistant-manager-ryshu",
+        "cinq-association-west-section-3-meursault",
+        "dead-rabbits-boss-meursault"
+      ]
+    },
+    "idBans": {
+      "p1": [
+        "lobotomy-ego-the-sword-sharpened-with-tears-rodion",
+        "heishou-pack-si-branch-rodion",
+        "the-thumb-east-capo-iiii-meursault",
+        "the-manager-of-la-manchaland-don-quixote",
+        "liu-association-south-section-3-yi-sang",
+        "heishou-pack-you-branch-sinclair",
+        "wild-hunt-heathcliff"
+      ],
+      "p2": [
+        "full-stop-office-fixer-heathcliff",
+        "w-corp-l3-cleanup-agent-ryshu",
+        "lobotomy-ego-solemn-lament-yi-sang",
+        "blade-lineage-mentor-meursault",
+        "seven-association-south-section-4-faust",
+        "molar-boatworks-fixer-ishmael",
+        "multicrack-office-rep-faust"
+      ]
+    },
+    "egoBans": {
+      "p1": [
+        "yearning-mircalla-don-quixote",
+        "magic-bullet-outis",
+        "contempt-awe-ryshu",
+        "sanguine-desire-rodion",
+        "solemn-lament-gregor"
+      ],
+      "p2": [
+        "in-the-name-of-love-and-hate-don-quixote",
+        "capote-meursault",
+        "ya-nyat-tad-rpam-outis",
+        "ya-nyat-tad-rpam-heathcliff",
+        "yearning-mircalla-meursault"
+      ]
+    },
+    "picks": {
+      "p1": [
+        "the-lord-of-hongyuan-hong-lu",
+        "heishou-pack-mao-branch-ryshu",
+        "w-corp-l3-cleanup-agent-yi-sang",
+        "the-middle-little-brother-sinclair",
+        "seven-association-south-section-4-heathcliff",
+        "lobotomy-ego-lantern-don-quixote",
+        "devyat-association-north-section-3-sinclair",
+        "cinq-association-east-section-3-don-quixote",
+        "family-hierarch-candidate-ishmael",
+        "wuthering-heights-chief-butler-outis",
+        "the-middle-little-brother-meursault",
+        "liu-association-south-section-4-director-rodion"
+      ],
+      "p2": [
+        "heishou-pack-mao-branch-outis",
+        "heishou-pack-si-branch-gregor",
+        "lobotomy-ego-in-the-name-of-love-and-hate-don-quixote",
+        "lobotomy-ego-magic-bullet-outis",
+        "firefist-office-survivor-gregor",
+        "dawn-office-fixer-sinclair",
+        "lce-ego-ardor-blossom-star-faust",
+        "lccb-assistant-manager-ishmael",
+        "liu-association-south-section-4-ishmael",
+        "liu-association-south-section-4-ryshu",
+        "the-ring-pointillist-student-yi-sang",
+        "g-corp-manager-corporal-gregor"
+      ]
+    },
+    "picks_s2": {
+      "p1": [],
+      "p2": []
+    },
+    "history": [
+      {
+        "type": "EGO_BAN",
+        "player": "p1",
+        "targetId": "yearning-mircalla-don-quixote"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p2",
+        "targetId": "in-the-name-of-love-and-hate-don-quixote"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p1",
+        "targetId": "magic-bullet-outis"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p2",
+        "targetId": "capote-meursault"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p1",
+        "targetId": "contempt-awe-ryshu"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p2",
+        "targetId": "ya-nyat-tad-rpam-outis"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p1",
+        "targetId": "sanguine-desire-rodion"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p2",
+        "targetId": "ya-nyat-tad-rpam-heathcliff"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p1",
+        "targetId": "solemn-lament-gregor"
+      },
+      {
+        "type": "EGO_BAN",
+        "player": "p2",
+        "targetId": "yearning-mircalla-meursault"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p1",
+        "targetId": "lobotomy-ego-the-sword-sharpened-with-tears-rodion"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p2",
+        "targetId": "full-stop-office-fixer-heathcliff"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p1",
+        "targetId": "heishou-pack-si-branch-rodion"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p2",
+        "targetId": "w-corp-l3-cleanup-agent-ryshu"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p1",
+        "targetId": "the-thumb-east-capo-iiii-meursault"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p2",
+        "targetId": "lobotomy-ego-solemn-lament-yi-sang"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p1",
+        "targetId": "the-manager-of-la-manchaland-don-quixote"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p2",
+        "targetId": "blade-lineage-mentor-meursault"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "the-lord-of-hongyuan-hong-lu"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "heishou-pack-mao-branch-ryshu"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "heishou-pack-mao-branch-outis"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "heishou-pack-si-branch-gregor"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "lobotomy-ego-in-the-name-of-love-and-hate-don-quixote"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "w-corp-l3-cleanup-agent-yi-sang"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "the-middle-little-brother-sinclair"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "lobotomy-ego-magic-bullet-outis"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "firefist-office-survivor-gregor"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "dawn-office-fixer-sinclair"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "seven-association-south-section-4-heathcliff"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "lobotomy-ego-lantern-don-quixote"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p2",
+        "targetId": "seven-association-south-section-4-faust"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p1",
+        "targetId": "liu-association-south-section-3-yi-sang"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p2",
+        "targetId": "molar-boatworks-fixer-ishmael"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p1",
+        "targetId": "heishou-pack-you-branch-sinclair"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p2",
+        "targetId": "multicrack-office-rep-faust"
+      },
+      {
+        "type": "ID_BAN",
+        "player": "p1",
+        "targetId": "wild-hunt-heathcliff"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "lce-ego-ardor-blossom-star-faust"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "lccb-assistant-manager-ishmael"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "devyat-association-north-section-3-sinclair"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "cinq-association-east-section-3-don-quixote"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "family-hierarch-candidate-ishmael"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "liu-association-south-section-4-ishmael"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "liu-association-south-section-4-ryshu"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "wuthering-heights-chief-butler-outis"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "the-middle-little-brother-meursault"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p1",
+        "targetId": "liu-association-south-section-4-director-rodion"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "the-ring-pointillist-student-yi-sang"
+      },
+      {
+        "type": "ID_PICK",
+        "player": "p2",
+        "targetId": "g-corp-manager-corporal-gregor"
+      }
+    ],
+    "hovered": {
+      "p1": null,
+      "p2": null
+    },
+    "banPools": {
+      "p1": [
+        "lobotomy-corp-remnant-faust",
+        "w-corp-l2-cleanup-agent-faust",
+        "the-one-who-grips-faust",
+        "t-corp-class-3-collection-staff-don-quixote",
+        "lobotomy-ego-red-eyes-penitence-ryshu",
+        "tingtang-gang-gangleader-hong-lu",
+        "full-stop-office-rep-hong-lu",
+        "kurokumo-clan-wakashu-heathcliff",
+        "kurokumo-clan-captain-ishmael",
+        "the-princess-of-la-manchaland-rodion",
+        "the-one-who-shall-grip-sinclair",
+        "the-barber-of-la-manchaland-outis",
+        "the-priest-of-la-manchaland-gregor",
+        "g-corp-manager-corporal-gregor",
+        "lobotomy-ego-red-sheet-sinclair",
+        "n-corp-kleinhammer-heathcliff",
+        "seven-association-south-section-6-ryshu",
+        "lccb-assistant-manager-ryshu",
+        "cinq-association-west-section-3-meursault",
+        "dead-rabbits-boss-meursault"
+      ],
+      "p2": [
+        "the-pequod-first-mate-yi-sang",
+        "lobotomy-ego-red-eyes-penitence-ryshu",
+        "full-stop-office-rep-hong-lu",
+        "r-corp-4th-pack-reindeer-hong-lu",
+        "kurokumo-clan-wakashu-heathcliff",
+        "kurokumo-clan-captain-ishmael",
+        "the-princess-of-la-manchaland-rodion",
+        "edgar-family-heir-gregor"
+      ]
+    },
+    "draftLogic": "2-3-2",
+    "matchType": "section1",
+    "rosterSize": 42,
+    "egoBanSteps": 10,
+    "coinFlipWinner": "p1",
+    "turnOrderDecided": false,
+    "timer": {
+      "enabled": true,
+      "running": false,
+      "endTime": 1756652529485,
+      "isReserve": false,
+      "paused": false,
+      "pauseTime": 0,
+      "reserveStartTime": 0
+    }
+  },
+  "matchMetadata": {
+    "stage": "Qualifiers",
+    "gameNumber": "7",
+    "player1": "Az8z3l",
+    "player2": "Popeye823",
+    "winner": "Az8z3l"
+  }
+}
